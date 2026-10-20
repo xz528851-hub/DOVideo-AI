@@ -12,4 +12,5 @@ mysql/logs/
 redis/data/
 qdrant/data/
 minio/data/
+/项目拷打.pdf
  
