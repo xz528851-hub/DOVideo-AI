@@ -1,5 +1,5 @@
 <div align="center">
-  <h2>DoVideoAI</h2>
+  <h2>StudyReplay Agent</h2>
   
   <p>
     <a href="https://github.com/Xiaoc7r/DOVideo-AI/stargazers"><img src="https://img.shields.io/github/stars/Xiaoc7r/DOVideo-AI?style=flat-square" alt="GitHub Stars"></a>
@@ -41,6 +41,7 @@
 | :--- | :--- | :--- |
 | 2026-10 | 逐条核对异步调度、分片上传、分布式锁链路，区分上游文档中「通用八股 / 旧版本实现 / 当前实现」 | [docs/upstream-doc-vs-code.md](docs/upstream-doc-vs-code.md) |
 | 2026-10 | 在本机实测提交接口与完整分析的耗时，记录环境、方法、样本与结论边界 | [docs/benchmark-dispatch.md](docs/benchmark-dispatch.md) |
+| 2026-10 | 为 OCR 证据增加 Tesseract TSV 置信度过滤（默认阈值 40），低置信度整帧文本不进入证据池 | `OcrUtils` + `OcrUtilsTest`（5 个单测） |
 
 ### 本机实测数据
 
@@ -55,12 +56,13 @@
 ### 与上游的差异
 
 - 文档：新增上述两份笔记，原有文档保持不变。
-- 代码：暂无业务代码改动；后续改造会在此处记录。
+- 代码：新增 OCR 置信度过滤，阈值可通过 `OCR_MIN_CONFIDENCE` 配置；新增 5 个解析与过滤单测。
 
 ### Roadmap
 
 - [x] 通读并核对异步调度链路
 - [x] 本机实测接口响应时间与完整分析耗时
+- [x] 增加 OCR 低置信度文本过滤
 - [ ] 为分片合并的「收据」路径补充集成测试
 - [ ] 将内容锁的等待超时改为可配置项
 - [ ] 扩充 Agent 评测用例并加入基线对比
